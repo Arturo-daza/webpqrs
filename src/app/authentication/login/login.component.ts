@@ -22,7 +22,7 @@ export class LoginComponent {
   onLogin(form: any): void {
     this.authenticationService.login(form.value).subscribe(
       (res) => {
-        localStorage.setItem('accessToken',JSON.parse(JSON.stringify(res)).accessToken);
+        localStorage.setItem('ACCESS_TOKEN',JSON.parse(JSON.stringify(res)).accessToken);
         this.router.navigateByUrl('/pqrs');
       }
     );

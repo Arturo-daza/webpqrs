@@ -1,6 +1,6 @@
 export interface Jwtres {
   datosUsuario: {
-    id: number,
+    id: string,
     usuario: string,
     correo: string,
     clave: string,

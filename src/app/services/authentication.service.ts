@@ -14,6 +14,7 @@ export class AuthenticationService {
   private token: string | null = '';
   private currentUser: string | null = null;
   private tipoUsuario: string | null = null;
+  private usuarioId: string | null = null;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -29,6 +30,7 @@ export class AuthenticationService {
             localStorage.setItem('CURRENT_USER', res.datosUsuario.usuario);
             localStorage.setItem('TIPO_DE_USUARIO', res.datosUsuario.tipo_de_usuario);
             localStorage.setItem('ACCESS_TOKEN', res.datosUsuario.accessToken);
+            localStorage.setItem('USUARIO_ID', res.datosUsuario.id);
             // console.log(JSON.parse(JSON.stringify(res)).accessToken)
             //ACCESS_TOKEN: JSON.parse(JSON.stringify(res)).accessToken
           }
@@ -70,5 +72,13 @@ export class AuthenticationService {
 
     }
     return this.tipoUsuario;
+  }
+
+  getUsuarioId(): string | null {
+    if (!this.usuarioId) {
+      this.usuarioId = localStorage.getItem('USUARIO_ID');
+
+    }
+    return this.usuarioId;
   }
 }
